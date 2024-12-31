@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syncwave New Year</title>
+    <link rel="icon" href="j.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --highlight-color: #ffe66d;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: url('lotus.jpg') center/cover no-repeat;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .loading-screen span {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #fff;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .company-title {
+            font-size: 4rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px rgba(98, 245, 235, 0.9);
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            min-height: 60vh;
+        }
+
+        .input-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #ff8787;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); }
+            50% { transform: translateY(50vh) scale(1); }
+            100% { transform: translateY(0) scale(0.5); }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+        
+            button {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+        
+            button {
+                padding: 0.75rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen">
+        <span></span>
+    </div>
+
+    <h1 class="company-title">SYNCWAVE</h1> 
+
+    <div class="main-container">
+        <div class="input-container" id="inputContainer">
+            <input type="text" id="nameInput" placeholder="Enter your name" required>
+            <button onclick="startCelebration()">Start Celebration Broooh!</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Syncewave Company. All rights reserved.</p>
+        <p>Celebrating with innovation</p>
+        <div class="social-links">
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 3000); // Adjust the delay as needed
+        };
+
+        function startCelebration() {
+            const name = document.getElementById('nameInput').value.trim();
+            if (!name) {
+                alert('Please enter your name!');
+                return;
+            }
+
+            const inputContainer = document.getElementById('inputContainer');
+            inputContainer.innerHTML = 
+                `<h1 class="greeting-message">Happy New Year, ${name}!<br> ආදරය හා සතුට පිරුණු සුභ අලුත් අවුරුද්දක් වේවා ඔයාට සහ ඔයාගෙ පවුලේ සැමට!🎉</h1>`;
+
+            createFireworks();
+        }
+
+        function createFireworks() {
+            setInterval(() => {
+                const firework = document.createElement('div');
+                firework.style.position = 'fixed';
+                firework.style.width = '5px';
+                firework.style.height = '5px';
+                firework.style.borderRadius = '50%';
+
+                const x = Math.random() * window.innerWidth;
+                const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff8787', '#a8e6cf'];
+
+                firework.style.left = x + 'px';
+                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                document.body.appendChild(firework);
+
+                firework.animate([
+                    { transform: 'translateY(100vh) scale(0)', opacity: 1 },
+                    { transform: 'translateY(0) scale(1)', opacity: 0 }
+                ], {
+                    duration: 1000,
+                    easing: 'ease-out'
+                });
+
+                setTimeout(() => firework.remove(), 1000);
+            }, 100);
+        }
+    </script>
+</body>
+</html>
